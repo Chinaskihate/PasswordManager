@@ -18,16 +18,13 @@ namespace PasswordManager.EntityFramework
 
         public DbSet<SavedAccount> SavedAccounts { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public PasswordManagerDbContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=PasswordManager;Trusted_Connection=True;");
 
-            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
         }
     }
