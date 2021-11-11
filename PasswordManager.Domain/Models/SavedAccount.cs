@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Domain.Models
 {
-    public class SocialNetwork : DomainObject
-    {
-        public string Name { get; set; }
+    public class SavedAccount : DomainObject
+    { 
+        public string ServiceName { get; set; }
+
+        public string CryptedPassword { get; set; }
     }
 }
