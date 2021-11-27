@@ -10,6 +10,8 @@ namespace PasswordManager.Domain.Models
     { 
         public string ServiceName { get; set; }
 
+        public string Username { get; set; }
+
         public string CryptedPassword { get; set; }
     }
 }
