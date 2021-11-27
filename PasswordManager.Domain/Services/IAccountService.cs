@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PasswordManager.WPF.ViewModels
+namespace PasswordManager.Domain.Services
 {
-    public class GroupsViewModel : BaseViewModel
+    public interface IAccountService : IDataService<Account>
     {
-
+        Task<Account> GetByUsername(string username);
     }
 }

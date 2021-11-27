@@ -1,4 +1,9 @@
-﻿using PasswordManager.WPF.ViewModels;
+﻿using Microsoft.AspNet.Identity;
+using PasswordManager.Domain.Models;
+using PasswordManager.Domain.Services.AuthenticationServices;
+using PasswordManager.EntityFramework;
+using PasswordManager.EntityFramework.Services;
+using PasswordManager.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +21,10 @@ namespace PasswordManager.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            IAuthenticationService service = new AuthenticationService(new AccountDataService(new PasswordManagerDbContextFactory()), new PasswordHasher());
+
+            service.Login("admin", "admin");
+
             var window = new MainWindow();
             window.DataContext = new MainViewModel();
             window.Show();
