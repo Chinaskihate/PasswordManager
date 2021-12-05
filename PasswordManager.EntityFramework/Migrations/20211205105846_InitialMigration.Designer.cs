@@ -10,8 +10,8 @@ using PasswordManager.EntityFramework;
 namespace PasswordManager.EntityFramework.Migrations
 {
     [DbContext(typeof(PasswordManagerDbContext))]
-    [Migration("20211111065743_AddFactory")]
-    partial class AddFactory
+    [Migration("20211205105846_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,6 +74,9 @@ namespace PasswordManager.EntityFramework.Migrations
                     b.Property<string>("ServiceName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PasswordGroupId");
@@ -88,7 +91,7 @@ namespace PasswordManager.EntityFramework.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")

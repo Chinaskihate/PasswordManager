@@ -12,7 +12,8 @@ namespace PasswordManager.CMD
         static void Main(string[] args)
         {
             IDataService<User> userService = new GenericDataService<User>(new PasswordManagerDbContextFactory());
-            Console.WriteLine(userService.Delete(1).Result);
+            userService.Create(new User());
+            Console.WriteLine(userService.GetAll().Result);
             Console.ReadLine();
         }
     }

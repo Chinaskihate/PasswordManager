@@ -22,8 +22,7 @@ namespace PasswordManager.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             IAuthenticationService service = new AuthenticationService(new AccountDataService(new PasswordManagerDbContextFactory()), new PasswordHasher());
-
-            service.Login("admin", "admin");
+            service.Login("test", "test");
 
             var window = new MainWindow();
             window.DataContext = new MainViewModel();

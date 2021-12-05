@@ -61,6 +61,7 @@ namespace PasswordManager.EntityFramework.Services
                     .Include(a => a.AccountHolder)
                     .Include(a => a.PasswordGroups)
                     .FirstOrDefaultAsync(a => a.AccountHolder.Username == username);
+                //return await context.Accounts.FirstOrDefaultAsync(a => a.AccountHolder.Username == username);
             }
         }
 
