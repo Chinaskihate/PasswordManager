@@ -30,7 +30,7 @@ namespace PasswordManager.WPF
             var authService = serviceProvider.GetRequiredService<IAuthenticationService>();
             var account = authService.Login("test", "test");
 
-            var window = new MainWindow();
+            var window = serviceProvider.GetRequiredService<MainWindow>();
             window.DataContext = serviceProvider.GetRequiredService<MainViewModel>();
             window.Show();
             base.OnStartup(e);
@@ -54,6 +54,8 @@ namespace PasswordManager.WPF
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<MainViewModel>();
+
+            services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
 
             return services.BuildServiceProvider();
         }
