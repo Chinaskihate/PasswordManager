@@ -10,8 +10,10 @@ namespace PasswordManager.Domain.Models
     {
         public Account Account { get; set; }
 
+        public string Name { get; set; }
+
         public ICollection<SavedAccount> SavedAccounts { get; set; }
 
-        public string PasswordOfGroup { get; set; }
+        public string PasswordOfGroupHash { get; set; }
     }
 }

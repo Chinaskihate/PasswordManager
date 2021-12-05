@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PasswordManager.EntityFramework;
 
 namespace PasswordManager.EntityFramework.Migrations
 {
     [DbContext(typeof(PasswordManagerDbContext))]
-    partial class PasswordManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211205111510_AddNamePropAndChangedPassToPassHash")]
+    partial class AddNamePropAndChangedPassToPassHash
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
