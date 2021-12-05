@@ -1,5 +1,6 @@
 ﻿using PasswordManager.WPF.State.Navigators;
 using PasswordManager.WPF.ViewModels;
+using PasswordManager.WPF.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,13 @@ namespace PasswordManager.WPF.Commands
 {
     public class UpdateCurrentViewModelCommand : ICommand
     {
-        private INavigator _navigator;
+        private readonly INavigator _navigator;
+        private readonly IPasswordManagerViewModelAbstractFactory _viewModelFactory;
 
-        public UpdateCurrentViewModelCommand(INavigator navigator)
+        public UpdateCurrentViewModelCommand(INavigator navigator, IPasswordManagerViewModelAbstractFactory viewModelFactory)
         {
             _navigator = navigator;
+            _viewModelFactory = viewModelFactory;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -30,18 +33,8 @@ namespace PasswordManager.WPF.Commands
             if (parameter is ViewType)
             {
                 var viewType = (ViewType)parameter;
-                switch (viewType)
-                {
-                    case ViewType.Groups:
-                        _navigator.CurrentViewModel = new GroupsViewModel();
-                        break;
-                    case ViewType.Accounts:
-                        _navigator.CurrentViewModel = new AccountsViewModel();
-                        break;
-                    case ViewType.About:
-                        _navigator.CurrentViewModel = new AboutViewModel();
-                        break;
-                }
+
+                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
             }
         }
     }
